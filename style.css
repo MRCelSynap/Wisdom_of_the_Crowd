@@ -1,0 +1,9 @@
+.submitButton{
+    float: right;
+}
+
+.submissionForm{
+    margin: auto;
+    width: 50%;
+    background-color: #ECECEC;
+}
