@@ -1,18 +1,20 @@
 <?php
 include_once("../.PHP/ErrorLog.php");
 include_once("../.PHP/DatabaseAccess.php");
+include_once("../.PHP/ValidateEmail.php");
 
 function login(ErrorLog &$log) : bool {
     $loggedIn = false;
-    if(empty($_POST["email"])) { $log->addMessage("EmptyEmail");}
-    if(empty($_POST["password"])) { $log->addMessage("EmptyPassword");}
-    $dba = new DatabaseAccess($log);
-    if(!empty($_POST["email"]) && !empty($_POST["password"])) {
+    $validLogin = true;
+    if(empty($_POST["email"])) { $validLogin = false; $log->addMessage("EmptyEmail");}
+    else if (!validateEmail($_POST["email"])) { $validLogin = false; $log->addMessage("InvalidEmail"); }
+    if(empty($_POST["password"])) { $validLogin = false;  $log->addMessage("EmptyPassword");}
+    if($validLogin) {
+        $dba = new DatabaseAccess($log);
         $loggedIn = $dba->verifyPassword($_POST["email"], $_POST["password"], $log);
     }
 
     if($loggedIn) {
-        session_start();
         $dba = new DatabaseAccess($log);
 
         $sessionID = hash("sha512", $_POST["email"] . date('Y-m-d'));

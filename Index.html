@@ -11,71 +11,84 @@
 
 <body>
     <div class='container'>
+        <div id='userDetail' class='cetner-horizontal' hidden></div>
         <div id='submissionForm' class='center' hidden>
-            <table>
-                <tr>
-                    <td>
-                        <label>
-                            Email:
-                        </label>
-                    </td>
-                    <td>
-                        <input type='text' id='email' class='right-align'>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Password:
-                        </label>
-                    </td>
-                    <td>
-                        <input type='password' id='password' class='right-align'>
-                    </td>
-                </tr>
-                <tr class='registrationForm' hidden>
-                    <td>
-                        <label>
-                            Repeat Password:
-                        </label>
-                    </td>
-                    <td>
-                        <input type='password' id='passwordRepeat' class='right-align'>
-                    </td>
-                </tr>
-                <tr class='registrationForm' hidden>
-                    <td>
-                        <label>
-                            First Name:
-                        </label>
-                    </td>
-                    <td>
-                        <input type='text' id='firstName' class='right-align'>
-                    </td>
-                </tr>
-                <tr class='registrationForm' hidden>
-                    <td>
-                        <label>
-                            Last Name:
-                        </label>
-                    </td>
-                    <td>
-                        <input type='text' id='lastName' class='right-align'>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            New user?
-                            <input type='checkbox' id='registrationToggle'>
-                        </label>
-                    </td>
-                    <td>
-                        <input type='button' value='Login' id='submitButton' class='right-align'>
-                    </td>
-                </tr>
-            </table>
-            <span id="loginFeedback" hidden></span>
+            <form target="#">
+                <table>
+                    <tr>
+                        <td>
+                            <label>
+                                Email:
+                            </label>
+                        </td>
+                        <td>
+                            <input type='text' id='email' class='right-align'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                Password:
+                            </label>
+                        </td>
+                        <td>
+                            <input type='password' id='password' class='registerDetail right-align'>
+                        </td>
+                    </tr>
+                    <tr class='registrationForm' hidden>
+                        <td>
+                            <label>
+                                Repeat Password:
+                            </label>
+                        </td>
+                        <td>
+                            <input type='password' id='passwordRepeat' class='registerDetail right-align'>
+                        </td>
+                    </tr>
+                    <tr class='registrationForm' hidden>
+                        <td>
+                            <label>
+                                First Name:
+                            </label>
+                        </td>
+                        <td>
+                            <input type='text' id='firstName' class='registerDetail right-align'>
+                        </td>
+                    </tr>
+                    <tr class='registrationForm' hidden>
+                        <td>
+                            <label>
+                                Last Name:
+                            </label>
+                        </td>
+                        <td>
+                            <input type='text' id='lastName' class='registerDetail right-align'>
+                        </td>
+                    </tr>
+                    <tr class='registrationForm' hidden>
+                            <td>
+                                <label>
+                                    Birthday:
+                                </label>
+                            </td>
+                            <td>
+                                <input type='date' id='birthDate' class='registerDetail right-align'>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                New user?
+                                <input type='checkbox' id='registrationToggle' class='registerDetail'>
+                            </label>
+                        </td>
+                        <td>
+                            <input type='submit' value='Login' id='submitButton' class='registerDetail right-align'>
+                        </td>
+                    </tr>
+                </table>
+                <div id="loginFeedback" hidden></div>
+            </form>
         </div>
     </div>
 </body>

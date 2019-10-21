@@ -20,11 +20,11 @@ class DatabaseAccess {
         mysqli_close($this->link);
     } // __destruct
 
-    function addUser($email, $password, ErrorLog &$log) : bool {
-        $query = "INSERT INTO users (Email, PasswordHash, FirstName, LastName, BirthDate) VALUES('" .  strtolower(mysqli_real_escape_string($this->link, $email)) . "','" . password_hash($password, PASSWORD_DEFAULT) . "','Test','User','1970-01-01')";
+    function addUser($email, $password, $firstName, $lastName, $birthDate, ErrorLog &$log) : bool {
+        $query = "INSERT INTO users (Email, PasswordHash, FirstName, LastName, BirthDate) VALUES('" .  strtolower(mysqli_real_escape_string($this->link, $email)) . "','" . password_hash($password, PASSWORD_DEFAULT) . "','" . mysqli_real_escape_string($this->link, $firstName) . "','" . mysqli_real_escape_string($this->link, $lastName) . "','" . mysqli_real_escape_string($this->link, $birthDate) . "')";
         $result = mysqli_query($this->link, $query);
         if(!$result) {
-            $log->addEntry("User already exists.");
+            $log->addMessage("UserAlreadyExists");
             return false; // User already exists
         } else {
             return true; // User added to the table
@@ -64,11 +64,19 @@ class DatabaseAccess {
     function isActiveSession($email, $sessionID, ErrorLog &$log) : bool{
         $query = "SELECT Email FROM users WHERE Email='" . mysqli_real_escape_string($this->link, $email) . "' AND SessionID='$sessionID'";
         $result = mysqli_query($this->link, $query);
-        if ($result->num_rows > 0) {
-            $log->addMessage("Active session found.");
+        if($result->num_rows > 0) {
             return true;
         } else { 
-            $log->addMessage("No active session found.");
+            return false;
+        }
+    }
+
+    function clearActiveSession($email, $sessionID, ErrorLog &$log) : bool {
+        $query = "UPDATE users SET SessionID=NULL WHERE Email='$email' AND SessionID='$sessionID'";
+        $result = mysqli_query($this->link, $query);
+        if($result < 1) {
+            return true;
+        } else {
             return false;
         }
     }
