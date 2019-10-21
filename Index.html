@@ -1,14 +1,17 @@
 <html>
 
 <head>
-    <title>Wisdome of the Crowd</title>
-    <script src="myScript.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Wisdom of the Crowd</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='Scripts/JS/myScript.js'></script>
+    <link href='Styles/style.css' rel='stylesheet' type='text/css'>
+
+    <!--- I do not have an SSL certificate for this project -->
 </head>
 
 <body>
-    <div class="submissionForm">
-        <form>
+    <div class='container'>
+        <div id='submissionForm' class='center' hidden>
             <table>
                 <tr>
                     <td>
@@ -17,7 +20,7 @@
                         </label>
                     </td>
                     <td>
-                        <input>
+                        <input type='text' id='email' class='right-align'>
                     </td>
                 </tr>
                 <tr>
@@ -27,22 +30,53 @@
                         </label>
                     </td>
                     <td>
-                        <input type="password">
+                        <input type='password' id='password' class='right-align'>
+                    </td>
+                </tr>
+                <tr class='registrationForm' hidden>
+                    <td>
+                        <label>
+                            Repeat Password:
+                        </label>
+                    </td>
+                    <td>
+                        <input type='password' id='passwordRepeat' class='right-align'>
+                    </td>
+                </tr>
+                <tr class='registrationForm' hidden>
+                    <td>
+                        <label>
+                            First Name:
+                        </label>
+                    </td>
+                    <td>
+                        <input type='text' id='firstName' class='right-align'>
+                    </td>
+                </tr>
+                <tr class='registrationForm' hidden>
+                    <td>
+                        <label>
+                            Last Name:
+                        </label>
+                    </td>
+                    <td>
+                        <input type='text' id='lastName' class='right-align'>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    </td>
-                    <td>
                         <label>
                             New user?
-                            <input type="checkbox">
+                            <input type='checkbox' id='registrationToggle'>
                         </label>
-                        <input type="submit" value="Submit" class="submitButton">
+                    </td>
+                    <td>
+                        <input type='button' value='Login' id='submitButton' class='right-align'>
                     </td>
                 </tr>
             </table>
-        </form>
+            <span id="loginFeedback" hidden></span>
+        </div>
     </div>
 </body>
 
