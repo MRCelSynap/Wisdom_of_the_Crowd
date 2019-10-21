@@ -119,7 +119,7 @@ function displayErrors(msg) {
         if (msg[i] === "InvalidEmail") { errorCount++; errorMessage += "Please enter a valid email address to login.</br>"; }
         if (msg[i] === "InvalidEmailRegister") { errorCount++; errorMessage += "Please enter a valid email address to register.</br>"; }
         if (msg[i] === "EmptyPassword") { errorCount++; errorMessage += "Please enter a password to login.</br>"; }
-        if (msg[i] === "EmptyPasswordRegister") { errorCount++; errorMessage += "Please enter a password to register.</br>"; }
+        if (msg[i] === "PasswordTooShort") { errorCount++; errorMessage += "Password is too short, minimum 8 characters long.</br>"; }
         if (msg[i] === "PasswordsMismatch") { errorCount++; errorMessage += "Passwords do not match.</br>"; }
         if (msg[i] === "InvalidEmailPassword") { errorCount++; errorMessage += "Invalid username and password combination.</br>"; }
         if (msg[i] === "UserAlreadyExists") { errorCount++; errorMessage += "Username already exists.</br>"; }

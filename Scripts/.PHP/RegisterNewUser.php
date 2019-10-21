@@ -12,7 +12,7 @@ function registerNewUser(ErrorLog &$log) : bool {
     $validRequest = true;
     $validEmail = validateEmail($_POST["email"]);
     if(!$validEmail) { $log->addMessage("InvalidEmailRegister"); $validRequest = false; }
-    if(empty($_POST["password"])) { $log->addMessage("EmptyPasswordRegister"); $validRequest = false; }
+    if(empty($_POST["password"]) || strlen($_POST["password"]) < 8) { $log->addMessage("PasswordTooShort"); $validRequest = false; }
     $validPassword = ($_POST["password"] === $_POST["passwordRepeat"]);
     if(!$validPassword) { $log->addMessage("PasswordsMismatch"); $validRequest = false;}
     $validDate = validateDate($_POST["birthDate"]);
