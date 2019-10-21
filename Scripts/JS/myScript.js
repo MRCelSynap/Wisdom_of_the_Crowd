@@ -143,9 +143,9 @@ function displayUserDetail(toDisplay, users) {
                 if(i==0) {
                     innerHTML += "class='thick-border'";
                 }
-                innerHTML += "><td class='picture-column'>";
+                innerHTML += "><td class='picture-column'><img src='";
                 innerHTML += users[i].profilePicture;
-                innerHTML += "</td><td><table class='inner'><tr>";
+                innerHTML += "' alt='UserPortrait(" + users[i].userID +")' class='display-picture'></td><td><table class='inner'><tr>";
                 innerHTML += "<td>First Name:</td><td>" + users[i].firstName + "</td></tr>";
                 innerHTML += "<td>Last Name:</td><td>" + users[i].lastName + "</td></tr>";
                 innerHTML += "<td>Email:</td><td>" + users[i].email + "</td></tr>";

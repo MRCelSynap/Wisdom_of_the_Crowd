@@ -60,6 +60,11 @@ tr.thick-border td {
     width: 115px;
 }
 
+.display-picture {
+    width: 90%;
+    height: 90%;
+}
+
 .inner td {
     width: 50%;
 }
