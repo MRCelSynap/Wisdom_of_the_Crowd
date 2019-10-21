@@ -4,6 +4,7 @@ include_once("../.PHP/SessionCheck.php");
 include_once("../.PHP/Login.php");
 include_once("../.PHP/Logout.php");
 include_once("../.PHP/RegisterNewUser.php");
+include_once("../.PHP/GetUserDetails.php");
 
 $log = new ErrorLog();
 session_start();
@@ -11,7 +12,13 @@ session_start();
 switch($_POST["request"]) {
     case "CheckSessionLoggedIn": {
         $response = checkSession($log);
-        echo(json_encode(["isLoggedIn" => $response, "email" => $_SESSION["User_Login"], "log" => $log->getMessages()]));
+        echo(json_encode(["isLoggedIn" => $response, "log" => $log->getMessages()]));
+        break;
+    }
+    case "GetUserDetails": {
+        $users = [];
+        $response = getUserDetails($users, $log);
+        echo(json_encode(["GetUserDetails" => $response, "users" => $users, "log" => $log->getMessages()]));
         break;
     }
     case "RegisterNewUser": {
@@ -21,7 +28,7 @@ switch($_POST["request"]) {
     }
     case "Login": {
         $response = login($log);
-        echo(json_encode(["isLoggedIn" => $response, "email" => strtolower($_POST["email"]), "log" => $log->getMessages()]));
+        echo(json_encode(["isLoggedIn" => $response, "log" => $log->getMessages()]));
         break;
     }
     case "Logout": {

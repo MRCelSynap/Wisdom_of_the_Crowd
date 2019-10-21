@@ -12,8 +12,8 @@ table {
 }
 
 #userDetail {
-    width: 80%;
-    height:15%;
+    width: 500px;
+    height:auto;
     background-color: #ECECEC;
 }
 
@@ -35,6 +35,18 @@ table {
     transform: translate(-50%, 0);
 }
 
+.full-span {
+    width: 100%;
+}
+
+.output td {
+    border: 1px solid black;
+}
+
+tr.thick-border td {
+    border-bottom: 5px solid black;
+}
+
 .center {
     margin: 0;
     position: absolute;
@@ -42,6 +54,14 @@ table {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.picture-column {
+    width: 115px;
+}
+
+.inner td {
+    width: 50%;
 }
 
 body{

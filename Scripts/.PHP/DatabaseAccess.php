@@ -1,5 +1,6 @@
 <?php
 include_once("../.PHP/ErrorLog.php");
+include_once("../.PHP/User.php");
 
 class DatabaseAccess {
 
@@ -79,5 +80,29 @@ class DatabaseAccess {
         } else {
             return false;
         }
+    }
+
+    function getUserData($email, $sessionID, &$userList, ErrorLog &$log, $all = false) : bool {
+        ///UserID, Email, FirstName, LastName, BirthDate, ProfilePicture
+        $query = "SELECT UserID, Email, FirstName, LastName, BirthDate, ProfilePicture FROM users WHERE Email = '$email' AND SessionID = '$sessionID'";
+        $result = mysqli_query($this->link, $query);
+        if($result->num_rows > 0) {
+            if($all) {
+                mysqli_free_result($result);
+                $query = "SELECT UserID, Email, FirstName, LastName, BirthDate, ProfilePicture FROM users ORDER BY BirthDate ASC";
+                $result = mysqli_query($this->link, $query);
+                while($data = $result->fetch_assoc()) {
+                    $user = new User($data["Email"], $data["FirstName"], $data["LastName"], $data["BirthDate"], $data["UserID"], $data["ProfilePicture"]);
+                    array_push($userList, $user);
+                    unset($user);
+                }
+                return true;
+            } else {
+                $data = $result->fetch_assoc();
+                array_push($userList, new User($data["Email"], $data["FirstName"], $data["LastName"], $data["BirthDate"], $data["UserID"], $data["ProfilePicture"]));
+                return true;
+            }
+        }
+        return false;
     }
 };
